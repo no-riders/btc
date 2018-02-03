@@ -22,10 +22,10 @@ function saveData(data) {
     fs.writeFileSync(DATA_FILEPATH, JSON.stringify(data, null, 2));
 }
 
-function getItemsByTime(collection, time) {
-    let last5mins = time - 60;
-    return collection.filter((item) => {
-        return item.timestamp >= last5mins && item.timestamp <= time
+function getItemByTime(collection, time) {
+    let correctedTime = time - 300;
+    return collection.find((item) => {
+        return item.timestamp >= correctedTime && item.timestamp <= time
     });
 }
 
@@ -35,11 +35,14 @@ app.get('/',(req, res) => {
         try {
             const response = await axios.get(url);
             const data = response.data;
+            let obj = {};
             if (!data) {
                 return null;
               }
+            obj.current_rate = data.last;
+            obj.timestamp = data.timestamp;
               const collection = [...getData()];
-              collection.push(data)
+              collection.push(obj)
               saveData(collection)
         } catch(error) {
             console.log(error);
@@ -66,9 +69,22 @@ app.get('/ticker', (req, res) => {
 app.get('/ticker5min', (req, res) => {
     let dateNow = Date.now().toString().slice(0, -3);
     const collection = [...getData()];
-    const filteredCollection = getItemsByTime(collection, dateNow);
-    res.json(filteredCollection)
-    res.end()
+    const last5mins = getItemByTime(collection, dateNow);
+
+    const getRate = async url => {
+        try {
+            const response = await axios.get(url);
+            const data = response.data;
+            let objToRender = {};
+            objToRender.current_rate = data.last;
+            objToRender.rate_5min = last5mins.current_rate;
+            res.json(objToRender)
+            res.end()
+        } catch(error) {
+            console.log(error);
+        }
+    }
+    getRate(url)
 })
 
 
