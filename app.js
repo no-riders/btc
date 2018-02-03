@@ -1,13 +1,7 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
-const axios = require('axios');
 
-
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(bodyParser.json());
+const index = require('./routes/index');
 
 
 //handle CORS
@@ -23,21 +17,8 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/',(req, res) => {
-    const url = 'https://www.bitstamp.net/api/ticker/';
-    const getRate = async url => {
-        try {
-            const response = await axios.get(url);
-            const data = response.data;
-            res.send(data)
-        } catch(error) {
-            console.log(error);
-        }
-    }
-getRate(url)
-
-    //res.send('Hello Express!')
-}) 
+app.use('/', index);
+//app.use('/ticker', ticker)
 
 
 // catch wrong route error
