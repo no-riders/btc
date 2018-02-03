@@ -7,6 +7,7 @@ const path = require('path');
 
 const DATA_FILEPATH = path.join(__dirname, '../data/data.json');
 const url = 'https://www.bitstamp.net/api/ticker/';
+const url2 = 'https://www.bitstamp.net/api/v2/ticker/ethusd';
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -34,13 +35,23 @@ app.get('/',(req, res) => {
     const getRate = async url => {
         try {
             const response = await axios.get(url);
+            const response2 = await axios.get(url2);
+
             const data = response.data;
+            const data2 = response2.data;
+
             let obj = {};
             if (!data) {
                 return null;
               }
-            obj.current_rate = data.last;
-            obj.timestamp = data.timestamp;
+              obj.bitcoin = {
+                  current_rate: data.last,
+                  timestamp: data.timestamp
+              }
+            obj.ethereum = {
+                current_rate: data2.last,
+                timestamp: data2.timestamp
+            }
               const collection = [...getData()];
               collection.push(obj)
               saveData(collection)
@@ -56,14 +67,23 @@ app.get('/ticker', (req, res) => {
     const getRate = async url => {
         try {
             const response = await axios.get(url);
+            const response2 = await axios.get(url2);
             const data = response.data;
-            res.json(data)
+            const data2 = response2.data;
+            res.json({
+                bitcoin: {
+                    current_rate: data.last
+                },
+                ethereum: {
+                    current_rate: data2.last
+                }
+            })
+            res.end()
         } catch(error) {
             console.log(error);
         }
     }
     getRate(url);
-    res.end()
 })
 
 app.get('/ticker5min', (req, res) => {
