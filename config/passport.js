@@ -1,5 +1,5 @@
 const passport = require('passport');
-const passportLocal = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
@@ -18,11 +18,11 @@ function saveData(filePath, data) {
 
 module.exports = (passport) => {
     //Local Strategy
-    passport.use(new passportLocal.Strategy((username, password, done) => {
+    passport.use(new LocalStrategy((username, password, done) => {
         //this would be stored to database, salted and hashed. For this test app, I will simplify
         const collection = [...getData(USERS_FILEPATH)];
         let userMatch = collection.find(user => {
-            user.username = username
+            return user.username === username
         })
         if (!userMatch) {
             done(null, false, { message: 'No user found' })
@@ -32,22 +32,23 @@ module.exports = (passport) => {
         bcrypt.compare(password, userMatch.password, (err, isMatch) => {
             if(err) throw err;
             if(isMatch) {
-                return done(null, user)
+                return done(null, userMatch)
             } else {
                 done(null, false, { message: 'Password does not match' })
             }
         });
     }));
+    
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        done(null, user);
     })
     
-    passport.deserializeUser((id, done) => {
+    passport.deserializeUser((user, done) => {
         //db query or cash in real-world app
-        done(null, {
-            id,
-            name: id
-        })
+        // let userMatch = collection.find(user => {
+        //     user.username = username
+        // })
+        done(null, user)
     
     })
 }

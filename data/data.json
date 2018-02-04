@@ -1,52 +1,602 @@
 [
   {
     "bitcoin": {
-      "current_rate": "9414.90",
-      "timestamp": "1517670187"
+      "current_rate": "8183.89",
+      "timestamp": "1517780145"
     },
     "ethereum": {
-      "current_rate": "994.70",
-      "timestamp": "1517670192"
+      "current_rate": "826.00",
+      "timestamp": "1517780146"
     }
   },
   {
     "bitcoin": {
-      "current_rate": "9414.90",
-      "timestamp": "1517670199"
+      "current_rate": "8200.00",
+      "timestamp": "1517780155"
     },
     "ethereum": {
-      "current_rate": "994.96",
-      "timestamp": "1517670201"
+      "current_rate": "826.00",
+      "timestamp": "1517780156"
     }
   },
   {
     "bitcoin": {
-      "current_rate": "9412.24",
-      "timestamp": "1517670210"
+      "current_rate": "8213.25",
+      "timestamp": "1517780165"
     },
     "ethereum": {
-      "current_rate": "994.96",
-      "timestamp": "1517670212"
+      "current_rate": "826.00",
+      "timestamp": "1517780166"
     }
   },
   {
     "bitcoin": {
-      "current_rate": "9415.00",
-      "timestamp": "1517670220"
+      "current_rate": "8190.32",
+      "timestamp": "1517780393"
     },
     "ethereum": {
-      "current_rate": "993.26",
-      "timestamp": "1517670221"
+      "current_rate": "829.00",
+      "timestamp": "1517780392"
     }
   },
   {
     "bitcoin": {
-      "current_rate": "9415.00",
-      "timestamp": "1517670229"
+      "current_rate": "8189.65",
+      "timestamp": "1517780401"
     },
     "ethereum": {
-      "current_rate": "993.26",
-      "timestamp": "1517670231"
+      "current_rate": "824.00",
+      "timestamp": "1517780401"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8160.01",
+      "timestamp": "1517780412"
+    },
+    "ethereum": {
+      "current_rate": "821.51",
+      "timestamp": "1517780414"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8150.01",
+      "timestamp": "1517780421"
+    },
+    "ethereum": {
+      "current_rate": "820.01",
+      "timestamp": "1517780424"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8159.95",
+      "timestamp": "1517780431"
+    },
+    "ethereum": {
+      "current_rate": "819.80",
+      "timestamp": "1517780434"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8170.00",
+      "timestamp": "1517780442"
+    },
+    "ethereum": {
+      "current_rate": "824.21",
+      "timestamp": "1517780443"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8161.00",
+      "timestamp": "1517780453"
+    },
+    "ethereum": {
+      "current_rate": "823.89",
+      "timestamp": "1517780453"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8171.04",
+      "timestamp": "1517780461"
+    },
+    "ethereum": {
+      "current_rate": "823.83",
+      "timestamp": "1517780463"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8170.00",
+      "timestamp": "1517780471"
+    },
+    "ethereum": {
+      "current_rate": "823.62",
+      "timestamp": "1517780472"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8197.96",
+      "timestamp": "1517780483"
+    },
+    "ethereum": {
+      "current_rate": "823.96",
+      "timestamp": "1517780484"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8177.11",
+      "timestamp": "1517780508"
+    },
+    "ethereum": {
+      "current_rate": "825.82",
+      "timestamp": "1517780509"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8177.99",
+      "timestamp": "1517780516"
+    },
+    "ethereum": {
+      "current_rate": "827.67",
+      "timestamp": "1517780518"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.99",
+      "timestamp": "1517780527"
+    },
+    "ethereum": {
+      "current_rate": "827.67",
+      "timestamp": "1517780528"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.92",
+      "timestamp": "1517780537"
+    },
+    "ethereum": {
+      "current_rate": "826.34",
+      "timestamp": "1517780538"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.95",
+      "timestamp": "1517780547"
+    },
+    "ethereum": {
+      "current_rate": "826.34",
+      "timestamp": "1517780547"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.99",
+      "timestamp": "1517780557"
+    },
+    "ethereum": {
+      "current_rate": "826.68",
+      "timestamp": "1517780557"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8183.10",
+      "timestamp": "1517780566"
+    },
+    "ethereum": {
+      "current_rate": "826.86",
+      "timestamp": "1517780567"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.98",
+      "timestamp": "1517780576"
+    },
+    "ethereum": {
+      "current_rate": "826.86",
+      "timestamp": "1517780579"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.91",
+      "timestamp": "1517780588"
+    },
+    "ethereum": {
+      "current_rate": "826.86",
+      "timestamp": "1517780587"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.94",
+      "timestamp": "1517780596"
+    },
+    "ethereum": {
+      "current_rate": "826.77",
+      "timestamp": "1517780598"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8199.98",
+      "timestamp": "1517780607"
+    },
+    "ethereum": {
+      "current_rate": "826.00",
+      "timestamp": "1517780608"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8199.98",
+      "timestamp": "1517780617"
+    },
+    "ethereum": {
+      "current_rate": "826.00",
+      "timestamp": "1517780617"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8199.97",
+      "timestamp": "1517780627"
+    },
+    "ethereum": {
+      "current_rate": "823.56",
+      "timestamp": "1517780627"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8199.95",
+      "timestamp": "1517780637"
+    },
+    "ethereum": {
+      "current_rate": "823.56",
+      "timestamp": "1517780637"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8198.94",
+      "timestamp": "1517780647"
+    },
+    "ethereum": {
+      "current_rate": "823.56",
+      "timestamp": "1517780649"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780657"
+    },
+    "ethereum": {
+      "current_rate": "824.51",
+      "timestamp": "1517780657"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780668"
+    },
+    "ethereum": {
+      "current_rate": "823.56",
+      "timestamp": "1517780668"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8196.99",
+      "timestamp": "1517780677"
+    },
+    "ethereum": {
+      "current_rate": "823.56",
+      "timestamp": "1517780678"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780687"
+    },
+    "ethereum": {
+      "current_rate": "823.35",
+      "timestamp": "1517780688"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780696"
+    },
+    "ethereum": {
+      "current_rate": "823.32",
+      "timestamp": "1517780699"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780708"
+    },
+    "ethereum": {
+      "current_rate": "819.93",
+      "timestamp": "1517780708"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780717"
+    },
+    "ethereum": {
+      "current_rate": "819.67",
+      "timestamp": "1517780719"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780726"
+    },
+    "ethereum": {
+      "current_rate": "819.67",
+      "timestamp": "1517780727"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8185.00",
+      "timestamp": "1517780739"
+    },
+    "ethereum": {
+      "current_rate": "823.14",
+      "timestamp": "1517780738"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8177.99",
+      "timestamp": "1517780746"
+    },
+    "ethereum": {
+      "current_rate": "819.17",
+      "timestamp": "1517780747"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8162.00",
+      "timestamp": "1517780757"
+    },
+    "ethereum": {
+      "current_rate": "822.53",
+      "timestamp": "1517780757"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8162.00",
+      "timestamp": "1517780758"
+    },
+    "ethereum": {
+      "current_rate": "822.53",
+      "timestamp": "1517780757"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.86",
+      "timestamp": "1517780767"
+    },
+    "ethereum": {
+      "current_rate": "822.61",
+      "timestamp": "1517780767"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.86",
+      "timestamp": "1517780767"
+    },
+    "ethereum": {
+      "current_rate": "822.61",
+      "timestamp": "1517780767"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.99",
+      "timestamp": "1517780778"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780778"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.99",
+      "timestamp": "1517780778"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780778"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.99",
+      "timestamp": "1517780787"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780788"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.99",
+      "timestamp": "1517780787"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780789"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.89",
+      "timestamp": "1517780798"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780797"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.89",
+      "timestamp": "1517780798"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780797"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.89",
+      "timestamp": "1517780807"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780807"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.89",
+      "timestamp": "1517780807"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780807"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8184.89",
+      "timestamp": "1517780815"
+    },
+    "ethereum": {
+      "current_rate": "822.60",
+      "timestamp": "1517780815"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8182.00",
+      "timestamp": "1517780824"
+    },
+    "ethereum": {
+      "current_rate": "825.23",
+      "timestamp": "1517780825"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8203.75",
+      "timestamp": "1517780889"
+    },
+    "ethereum": {
+      "current_rate": "825.23",
+      "timestamp": "1517780892"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8213.31",
+      "timestamp": "1517780902"
+    },
+    "ethereum": {
+      "current_rate": "824.00",
+      "timestamp": "1517780902"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8211.93",
+      "timestamp": "1517780912"
+    },
+    "ethereum": {
+      "current_rate": "824.00",
+      "timestamp": "1517780911"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8211.93",
+      "timestamp": "1517780919"
+    },
+    "ethereum": {
+      "current_rate": "823.60",
+      "timestamp": "1517780922"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8213.16",
+      "timestamp": "1517780930"
+    },
+    "ethereum": {
+      "current_rate": "823.60",
+      "timestamp": "1517780930"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8124.72",
+      "timestamp": "1517781179"
+    },
+    "ethereum": {
+      "current_rate": "814.30",
+      "timestamp": "1517781179"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8106.96",
+      "timestamp": "1517781187"
+    },
+    "ethereum": {
+      "current_rate": "814.96",
+      "timestamp": "1517781187"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "8100.00",
+      "timestamp": "1517781199"
+    },
+    "ethereum": {
+      "current_rate": "815.96",
+      "timestamp": "1517781199"
     }
   }
 ]
