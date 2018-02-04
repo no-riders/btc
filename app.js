@@ -3,7 +3,7 @@ const app = express();
 
 const index = require('./routes/index');
 
-
+const PORT = process.env.PORT || 3001;
 //handle CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -15,7 +15,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const PORT = process.env.PORT || 3001;
+app.set('view engine', 'ejs')
 
 app.use('/', index);
 //app.use('/ticker', ticker)
