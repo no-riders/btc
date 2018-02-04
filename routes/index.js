@@ -32,38 +32,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //configure local strategy
-passport.use(new passportLocal.Strategy((username, password, done) => {
-    //this would be stored to database, salted and hashed. For this test app, I will simplify
 
-    if (username === password) {
-        done(null, {
-            id: username,
-            name: username
-        });
-    } else {
-        done(null, null)
-    }
-}))
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-})
 
-passport.deserializeUser((id, done) => {
-    //db query or cash in real-world app
-    done(null, {
-        id,
-        name: id
-    })
 
-})
-
-function getData() {
-    return JSON.parse(fs.readFileSync(DATA_FILEPATH, "utf-8"));
+function getData(filePath) {
+    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
   }
   
-function saveData(data) {
-    fs.writeFileSync(DATA_FILEPATH, JSON.stringify(data, null, 2));
+function saveData(filePath, data) {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
 function getItemByTime(collection, time) {
@@ -100,9 +78,9 @@ app.get('/',(req, res) => {
 //                 current_rate: data2.last,
 //                 timestamp: data2.timestamp
 //             }
-//               const collection = [...getData()];
+//               const collection = [...getData(DATA_FILEPATH)];
 //               collection.push(obj)
-//               saveData(collection)
+//               saveData(DATA_FILEPATH, collection)
 //         } catch(error) {
 //             console.log(error);
 //         }
@@ -160,7 +138,9 @@ app.post('/register', (req, res) => {
                 console.log(err)
             }
             newUser.password = hash;
-            fs.writeFileSync(USERS_FILEPATH, JSON.stringify(newUser, null, 2));
+            const collection = [...getData(USERS_FILEPATH)]
+            collection.push(newUser)
+            saveData(USERS_FILEPATH, collection)
             res.redirect('/login');
         })
     })

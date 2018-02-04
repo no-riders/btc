@@ -1,2 +1,7 @@
-{
-}
+[
+  {
+    "username": "effg",
+    "email": "test@test.com",
+    "password": "$2a$10$aoaUjBQLZLIxQ3FfmkfcWeGu5ArAOy/0QlBWSSbjqgNd5U3.QjD/S"
+  }
+]
