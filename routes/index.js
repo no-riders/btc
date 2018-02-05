@@ -49,7 +49,7 @@ function getItemByTime(collection, time) {
 }
 
 
-app.get('/',(req, res) => {
+app.get('/', (req, res) => {
 
     const getRate = async url => {
         try {
@@ -111,13 +111,37 @@ app.get('/ticker', (req, res) => {
     getRate(url);
 })
 
+app.get('/ticker5min', (req, res) => {
+    let dateNow = Date.now().toString().slice(0, -3);
+    const collection = [...getData(DATA_FILEPATH)];
+    const last5mins = getItemByTime(collection, dateNow);
+
+    const getRate = async url => {
+        try {
+            const response = await axios.get(url);
+            const data = response.data;
+            let objToRender = {};
+            objToRender.current_rate = data.last;
+            objToRender.rate_5min = last5mins.current_rate;
+            res.json(objToRender)
+            res.end()
+        } catch(error) {
+            console.log(error);
+        }
+    }
+    getRate(url)
+})
+
+app.get('/advisor', hasAccess, (req, res) => {
+    res.send('Advisor page')
+})
 
 app.get('/login', (req, res) => {
     res.render('login')
 })
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', failureFlash: true }), (req, res) => {
-    //res.redirect('/');
+app.post('/login', passport.authenticate('local'), (req, res) => {
+    res.redirect('/');
 })
 
 app.get('/register', (req, res) => {
@@ -150,32 +174,14 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
-app.get('/ticker5min', (req, res) => {
-    let dateNow = Date.now().toString().slice(0, -3);
-    const collection = [...getData(DATA_FILEPATH)];
-    const last5mins = getItemByTime(collection, dateNow);
-
-//     let x = collection.find(item => {
-//         //console.log(item['bitcoin'])
-//         return item['bitcoin'].current_rate === "8124.72"
-//     })
-
-// console.log(x)
-    const getRate = async url => {
-        try {
-            const response = await axios.get(url);
-            const data = response.data;
-            let objToRender = {};
-            objToRender.current_rate = data.last;
-            objToRender.rate_5min = last5mins.current_rate;
-            res.json(objToRender)
-            res.end()
-        } catch(error) {
-            console.log(error);
-        }
+function hasAccess(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next()
+    } else {
+        res.redirect('/login')
     }
-    getRate(url)
-})
+}
+
 
 
 

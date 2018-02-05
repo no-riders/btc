@@ -8,13 +8,15 @@
 </head>
 <body>
     <% if (!isAuthenticated) { %> 
-        Fetching Bitcoin and Ethereum rate. To view current rate, <a href="/ticker">click here</a>
-        Or to see rates 5 minutes ago <a href="/ticker5min">click here</a>
         <a href="/login">Log in here</a>
         <a href="/register">Register here</a>
     <% } else { %>
-        Hello, <%= user.name %>!
+        Hello, Registered User!
+        Fetching Bitcoin and Ethereum rate. To view current rate, <a href="/ticker">click here</a>.
+        Or to see rates 5 minutes ago <a href="/ticker5min">click here</a>.
+        Advisor page(register user only) <a href="/advisor">here</a>.
         <a href="/logout">Log out here</a>
+
         <% } %> 
 </body>
 </html>
