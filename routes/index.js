@@ -10,12 +10,13 @@ const path = require('path');
 
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const helper = require('../helpers/helpers');
 
 
-const DATA_FILEPATH = path.join(__dirname, '../data/data.json');
-const USERS_FILEPATH = path.join(__dirname, '../data/users.json');
-const url = 'https://www.bitstamp.net/api/ticker/';
-const url2 = 'https://www.bitstamp.net/api/v2/ticker/ethusd';
+// const DATA_FILEPATH = path.join(__dirname, '../data/data.json');
+// const USERS_FILEPATH = path.join(__dirname, '../data/users.json');
+// const url = 'https://www.bitstamp.net/api/ticker/';
+// const url2 = 'https://www.bitstamp.net/api/v2/ticker/ethusd';
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -33,25 +34,10 @@ require('../config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-function getData(filePath) {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  }
-  
-function saveData(filePath, data) {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-}
-
-function getItemByTime(collection, time) {
-    let correctedTime = time - 500;
-    return collection.find((item) => {
-        return item['bitcoin'].timestamp >= correctedTime && item.timestamp <= time
-    });
-}
-
 
 app.get('/', (req, res) => {
 
-    const getRate = async url => {
+    const getRate = async (url, url2) => {
         try {
             const response = await axios.get(url);
             const response2 = await axios.get(url2);
@@ -71,15 +57,15 @@ app.get('/', (req, res) => {
                 current_rate: data2.last,
                 timestamp: data2.timestamp
             }
-              const collection = [...getData(DATA_FILEPATH)];
+              const collection = [...helper.getData(helper.DATA_FILEPATH)];
               collection.push(obj)
-              saveData(DATA_FILEPATH, collection)
+              helper.saveData(helper.DATA_FILEPATH, collection)
         } catch(error) {
             console.log(error);
         }
     }
-setInterval(getRate.bind(null, url), 10*1000);
-getRate(url)
+setInterval(getRate.bind(null, helper.url), 10*1000);
+getRate(helper.url, helper.url2)
 
     res.render('index', {
         isAuthenticated: req.isAuthenticated(),
@@ -89,7 +75,7 @@ getRate(url)
 })
 
 app.get('/ticker', (req, res) => {
-    const getRate = async url => {
+    const getRate = async (url, url2) => {
         try {
             const response = await axios.get(url);
             const response2 = await axios.get(url2);
@@ -108,13 +94,13 @@ app.get('/ticker', (req, res) => {
             console.log(error);
         }
     }
-    getRate(url);
+    getRate(helper.url, helper.url2);
 })
 
 app.get('/ticker5min', (req, res) => {
     let dateNow = Date.now().toString().slice(0, -3);
-    const collection = [...getData(DATA_FILEPATH)];
-    const last5mins = getItemByTime(collection, dateNow);
+    const collection = [...helper.getData(helper.DATA_FILEPATH)];
+    const last5mins = helper.getItemByTime(collection, dateNow);
 
     const getRate = async url => {
         try {
@@ -129,7 +115,7 @@ app.get('/ticker5min', (req, res) => {
             console.log(error);
         }
     }
-    getRate(url)
+    getRate(helper.url)
 })
 
 app.get('/advisor', hasAccess, (req, res) => {
@@ -161,9 +147,9 @@ app.post('/register', (req, res) => {
                 console.log(err)
             }
             newUser.password = hash;
-            const collection = [...getData(USERS_FILEPATH)]
+            const collection = [...helper.getData(helper.USERS_FILEPATH)]
             collection.push(newUser)
-            saveData(USERS_FILEPATH, collection)
+            helper.saveData(helper.USERS_FILEPATH, collection)
             res.redirect('/login');
         })
     })

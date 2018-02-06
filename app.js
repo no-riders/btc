@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
+
+
 
 const index = require('./routes/index');
 
 const PORT = process.env.PORT || 3001;
+
+//logger
+app.use(morgan('tiny'));
+
 //handle CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

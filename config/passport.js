@@ -1,26 +1,15 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const fs = require('fs');
-const path = require('path');
 const bcrypt = require('bcryptjs');
 
-const USERS_FILEPATH = path.join(__dirname, '../data/users.json');
-
-function getData(filePath) {
-    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  }
-  
-function saveData(filePath, data) {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-}
-
+const helper = require('../helpers/helpers');
 
 
 module.exports = (passport) => {
     //Local Strategy
     passport.use(new LocalStrategy((username, password, done) => {
         //this would be stored to database, salted and hashed. For this test app, I will simplify
-        const collection = [...getData(USERS_FILEPATH)];
+        const collection = [...helper.getData(helper.USERS_FILEPATH)];
         let userMatch = collection.find(user => {
             return user.username === username
         })

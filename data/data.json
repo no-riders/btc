@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "bitcoin": {
+      "current_rate": "7599.99",
+      "timestamp": "1517946953"
+    },
+    "ethereum": {
+      "current_rate": "764.82",
+      "timestamp": "1517946958"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7593.29",
+      "timestamp": "1517946966"
+    },
+    "ethereum": {
+      "current_rate": "760.02",
+      "timestamp": "1517946962"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7545.04",
+      "timestamp": "1517947206"
+    },
+    "ethereum": {
+      "current_rate": "756.06",
+      "timestamp": "1517947208"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7545.04",
+      "timestamp": "1517947218"
+    },
+    "ethereum": {
+      "current_rate": "756.02",
+      "timestamp": "1517947219"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7549.34",
+      "timestamp": "1517947231"
+    },
+    "ethereum": {
+      "current_rate": "756.02",
+      "timestamp": "1517947231"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7534.88",
+      "timestamp": "1517947234"
+    },
+    "ethereum": {
+      "current_rate": "756.02",
+      "timestamp": "1517947237"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7534.88",
+      "timestamp": "1517947246"
+    },
+    "ethereum": {
+      "current_rate": "756.02",
+      "timestamp": "1517947247"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7534.80",
+      "timestamp": "1517947247"
+    },
+    "ethereum": {
+      "current_rate": "755.78",
+      "timestamp": "1517947249"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7549.00",
+      "timestamp": "1517947291"
+    },
+    "ethereum": {
+      "current_rate": "755.00",
+      "timestamp": "1517947294"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7550.00",
+      "timestamp": "1517947347"
+    },
+    "ethereum": {
+      "current_rate": "755.00",
+      "timestamp": "1517947352"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7473.64",
+      "timestamp": "1517947557"
+    },
+    "ethereum": {
+      "current_rate": "748.00",
+      "timestamp": "1517947560"
+    }
+  },
+  {
+    "bitcoin": {
+      "current_rate": "7576.59",
+      "timestamp": "1517947791"
+    },
+    "ethereum": {
+      "current_rate": "758.53",
+      "timestamp": "1517947793"
+    }
+  }
+]
