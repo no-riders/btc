@@ -1,10 +1,10 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("fs"),
+    path = require("path");
 
-const USERS_FILEPATH = path.join(__dirname, "../data/users.json");
-const DATA_FILEPATH = path.join(__dirname, "../data/data.json");
-const url = "https://www.bitstamp.net/api/ticker/";
-const url2 = "https://www.bitstamp.net/api/v2/ticker/ethusd";
+const USERS_FILEPATH = path.join(__dirname, "../data/users.json"),
+    DATA_FILEPATH = path.join(__dirname, "../data/data.json"),
+    url = "https://www.bitstamp.net/api/ticker/",
+    url2 = "https://www.bitstamp.net/api/v2/ticker/ethusd";
 
 
 

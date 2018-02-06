@@ -1,8 +1,8 @@
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcryptjs');
+const passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
+    bcrypt = require('bcryptjs'),
 
-const helper = require('../helpers/helpers');
+    helper = require('../helpers/helpers');
 
 
 module.exports = (passport) => {
@@ -38,6 +38,5 @@ module.exports = (passport) => {
         //     user.username = username
         // })
         done(null, user)
-    
     })
 }
