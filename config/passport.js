@@ -1,20 +1,22 @@
 const passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     bcrypt = require('bcryptjs'),
+    flash = require('connect-flash'),
 
     helper = require('../helpers/helpers');
 
 
 module.exports = (passport) => {
     //Local Strategy
-    passport.use(new LocalStrategy((username, password, done) => {
+    passport.use(new LocalStrategy((req, username, password, done) => {
         //this would be stored to database, salted and hashed. For this test app, I will simplify
         const collection = [...helper.getData(helper.USERS_FILEPATH)];
         let userMatch = collection.find(user => {
             return user.username === username
         })
+
         if (!userMatch) {
-            done(null, false, { message: 'No user found' })
+            done(null, false, req.flash('loginMessage','No user found!'))
         }
 
         //Match password
@@ -23,7 +25,7 @@ module.exports = (passport) => {
             if(isMatch) {
                 return done(null, userMatch)
             } else {
-                done(null, false, { message: 'Password does not match' })
+                done(null, false, req.flash('loginMessage', 'Oops! Wrong password!'))
             }
         });
     }));

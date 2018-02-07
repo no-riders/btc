@@ -5,9 +5,9 @@ const express = require('express');
     expressSession = require('express-session'),
     axios = require('axios'),
     flash = require('connect-flash'),
-    
     passport = require('passport'),    
     bcrypt = require('bcryptjs'),  
+    
     helper = require('../helpers/helpers');
 
 
@@ -15,13 +15,14 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(expressSession({ 
-    secret: process.env.SESSION_SECRET || 'secret',
-    resave: false,
-    saveUninitialized: false
-}))
-app.use(flash());
+// app.use(cookieParser());
+// app.use(flash());
+// app.use(expressSession({ 
+//     secret: process.env.SESSION_SECRET || 'secret',
+//     resave: false,
+//     saveUninitialized: false
+// }))
+
 require('../config/passport')(passport);
 
 app.use(passport.initialize());
@@ -115,15 +116,15 @@ app.get('/advisor', hasAccess, (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login', { message: req.flash('loginMessage') });
 })
 
-app.post('/login', passport.authenticate('local'), (req, res) => {
+app.post('/login', passport.authenticate('local', { failureFlash: true }), (req, res) => {
     res.redirect('/');
 })
 
 app.get('/register', (req, res) => {
-    res.render('register')
+    res.render('register', { message: req.flash('signupMessage') });
 })
 
 app.post('/register', (req, res) => {

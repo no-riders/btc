@@ -5,18 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Auth</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <style>
+        body { padding-top:80px; }
+    </style>
 </head>
 <body>
-    <% if (!isAuthenticated) { %> 
-        <a href="/login">Log in here</a>
-        <a href="/register">Register here</a>
-    <% } else { %>
-        Hello, Registered User!
-        Fetching Bitcoin and Ethereum rate. To view current rate, <a href="/ticker">click here</a>.
-        Or to see rates 5 minutes ago <a href="/ticker5min">click here</a>.
-        Advisor page(register user only) <a href="/advisor">here</a>.
-        <a href="/logout">Log out here</a>
+        <div class="container">
+            <% if (!isAuthenticated) { %> 
+                <div class="jumbotron text-center">
+                    <h1><span class="fa fa-lock"></span> Authentication</h1>
+            
+                    <p>Login or Register with:</p>
+            
+                    <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
+                    <a href="/register" class="btn btn-default"><span class="fa fa-user"></span>Register</a>
+                </div>
+            <% } else { %>
+                <p>Hello <% user %>!</p>
+                <p><span class="fas fa-spinner fa-lg fa-pulse"></span> Fetching rates</p>
+                <a href="/ticker" class="btn btn-default"><span class="fab fa-bitcoin fa-lg"></span> Current Rate</a>
+                <a href="/ticker5min" class="btn btn-default"><span class="far fa-clock fa-lg"></span> 5min Rate</a>
+                <a href="/advisor" class="btn btn-default"><span class="fa fa-lock fa-lg"></span> Advisor</a>
+                
+            <%} %>
 
-        <% } %> 
+
+        </div>
+
+
 </body>
 </html>

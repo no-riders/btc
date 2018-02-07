@@ -1,12 +1,24 @@
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
+const express = require('express'),
+    app = express(),
+    morgan = require('morgan'),
+    flash = require('connect-flash'),
+    cookieParser = require('cookie-parser'),
+    expressSession = require('express-session'),
+    util = require('util'),
+
+    index = require('./routes/index'),
+
+    PORT = process.env.PORT || 3000;
 
 
+    app.use(cookieParser());
+    app.use(flash());
+    app.use(expressSession({ 
+        secret: process.env.SESSION_SECRET || 'secret',
+        resave: false,
+        saveUninitialized: false
+    }))
 
-const index = require('./routes/index');
-
-const PORT = process.env.PORT || 3001;
 
 //logger
 app.use(morgan('tiny'));
