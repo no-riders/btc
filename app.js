@@ -4,24 +4,26 @@ const express = require('express'),
     flash = require('connect-flash'),
     cookieParser = require('cookie-parser'),
     expressSession = require('express-session'),
-    util = require('util'),
+    passport = require('passport'),    
+    bcrypt = require('bcryptjs'),  
 
-    index = require('./routes/index'),
+    PORT = process.env.PORT || 3002;
 
-    PORT = process.env.PORT || 3000;
+    app.use(morgan('tiny'));
 
+    // app.use(cookieParser());
+    // app.use(expressSession({ 
+    //     secret: process.env.SESSION_SECRET || 'secret',
+    //     resave: false,
+    //     saveUninitialized: false
+    // }))
+    // require('./config/passport')(passport);
+    
+    // app.use(passport.initialize());
+    // app.use(passport.session());
+    // app.use(flash());
 
-    app.use(cookieParser());
-    app.use(flash());
-    app.use(expressSession({ 
-        secret: process.env.SESSION_SECRET || 'secret',
-        resave: false,
-        saveUninitialized: false
-    }))
-
-
-//logger
-app.use(morgan('tiny'));
+const index = require('./routes/index')
 
 //handle CORS
 app.use((req, res, next) => {

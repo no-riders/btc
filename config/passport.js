@@ -8,7 +8,12 @@ const passport = require('passport'),
 
 module.exports = (passport) => {
     //Local Strategy
-    passport.use(new LocalStrategy((req, username, password, done) => {
+    passport.use(new LocalStrategy({
+        usernameField: 'username',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
+    (req, username, password, done) => {
         //this would be stored to database, salted and hashed. For this test app, I will simplify
         const collection = [...helper.getData(helper.USERS_FILEPATH)];
         let userMatch = collection.find(user => {
@@ -16,7 +21,7 @@ module.exports = (passport) => {
         })
 
         if (!userMatch) {
-            done(null, false, req.flash('loginMessage','No user found!'))
+            done(null, false)
         }
 
         //Match password
@@ -25,7 +30,7 @@ module.exports = (passport) => {
             if(isMatch) {
                 return done(null, userMatch)
             } else {
-                done(null, false, req.flash('loginMessage', 'Oops! Wrong password!'))
+                done(null, false)
             }
         });
     }));

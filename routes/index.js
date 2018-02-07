@@ -15,18 +15,18 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-// app.use(cookieParser());
-// app.use(flash());
-// app.use(expressSession({ 
-//     secret: process.env.SESSION_SECRET || 'secret',
-//     resave: false,
-//     saveUninitialized: false
-// }))
+app.use(cookieParser());
+app.use(expressSession({ 
+    secret: process.env.SESSION_SECRET || 'secret',
+    resave: false,
+    saveUninitialized: false
+}))
 
 require('../config/passport')(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 
 app.get('/', (req, res) => {
@@ -119,7 +119,7 @@ app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') });
 })
 
-app.post('/login', passport.authenticate('local', { failureFlash: true }), (req, res) => {
+app.post('/login', passport.authenticate('local', { failureFlash: 'Invalid username or password' }), (req, res) => {
     res.redirect('/');
 })
 

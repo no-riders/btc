@@ -24,7 +24,7 @@
                     <a href="/register" class="btn btn-default"><span class="fa fa-user"></span>Register</a>
                 </div>
             <% } else { %>
-                <p>Hello <% user %>!</p>
+                <p>Hello <% (user) %>!</p>
                 <p><span class="fas fa-spinner fa-lg fa-pulse"></span> Fetching rates</p>
                 <a href="/ticker" class="btn btn-default"><span class="fab fa-bitcoin fa-lg"></span> Current Rate</a>
                 <a href="/ticker5min" class="btn btn-default"><span class="far fa-clock fa-lg"></span> 5min Rate</a>
