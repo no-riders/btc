@@ -7,7 +7,9 @@ const express = require('express');
     flash = require('connect-flash'),
     passport = require('passport'),    
     bcrypt = require('bcryptjs'),  
-    
+    uncaught = require('uncaught'),
+
+
     helper = require('../helpers/helpers');
 
 
@@ -28,9 +30,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+//promise rej err handling
+uncaught.start();
+uncaught.addListener(function (error) {
+    console.log('Uncaught error or rejection: ', error.message);
+});
 
 app.get('/', (req, res) => {
     const getRate = async (url, url2) => {
+
         try {
             const response = await axios.get(url),
                 response2 = await axios.get(url2),
@@ -54,7 +62,8 @@ app.get('/', (req, res) => {
               collection.push(obj)
               helper.saveData(helper.DATA_FILEPATH, collection)
         } catch(error) {
-            console.log(error);
+            throw new Error
+            //console.log('!!!!', error);
         }
     }
 setInterval(getRate.bind(null, helper.url), 10*1000);
