@@ -11,24 +11,24 @@ const express = require('express');
 
 
     helper = require('../helpers/helpers');
-
+    
 
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(expressSession({ 
-    secret: process.env.SESSION_SECRET || 'secret',
-    resave: false,
-    saveUninitialized: false
-}))
+// app.use(cookieParser());
+// app.use(expressSession({ 
+//     secret: process.env.SESSION_SECRET || 'secret',
+//     resave: false,
+//     saveUninitialized: false
+// }))
 
-require('../config/passport')(passport);
+// require('../config/passport')(passport);
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
 
 //promise rej err handling
 uncaught.start();
@@ -129,32 +129,54 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', passport.authenticate('local', { failureFlash: 'Invalid username or password' }), (req, res) => {
+    req.flash('success', 'Logged in successfully')
     res.redirect('/');
 })
 
 app.get('/register', (req, res) => {
-    res.render('register', { message: req.flash('signupMessage') });
+    res.render('register')
+
 })
 
 app.post('/register', (req, res) => {
-    let newUser = {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    }
+    const name = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    const password2 = req.body.password2;
 
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if(err) {
-                console.log(err)
-            }
-            newUser.password = hash;
-            const collection = [...helper.getData(helper.USERS_FILEPATH)]
-            collection.push(newUser)
-            helper.saveData(helper.USERS_FILEPATH, collection)
-            res.redirect('/login');
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('email', 'Email is required').notEmpty();
+    req.checkBody('email', 'Email is not valid').isEmail();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password2', 'Passwords do not match').equals(password);
+
+    let errors = req.validationErrors();
+    if (errors) {
+        res.render('register', {
+            errors: errors
         })
-    })
+    } else {
+        let newUser = {
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            password2: req.body.password2
+        }
+
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    if(err) {
+                        console.log(err)
+                    }
+                    newUser.password = hash;
+                    const collection = [...helper.getData(helper.USERS_FILEPATH)]
+                    collection.push(newUser)
+                    helper.saveData(helper.USERS_FILEPATH, collection)
+                    req.flash('success', 'Successfully register, please log in')
+                    res.redirect('/login');
+                })
+            })
+    }
 })
 
 app.get('/logout', (req, res) => {
