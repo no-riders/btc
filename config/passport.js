@@ -19,20 +19,21 @@ module.exports = (passport) => {
         let userMatch = collection.find(user => {
             return user.username === username
         })
-
+//console.log(userMatch)
         if (!userMatch) {
-            done(null, false)
+            done(null, false, {message: "No user found"})
+        } else {
+            //Match password
+            bcrypt.compare(password, userMatch.password, (err, isMatch) => {
+                if(err) throw err;
+                if(isMatch) {
+                    return done(null, userMatch)
+                } else {
+                    done(null, false, {message: "Invalid password"})
+                }
+            });
         }
 
-        //Match password
-        bcrypt.compare(password, userMatch.password, (err, isMatch) => {
-            if(err) throw err;
-            if(isMatch) {
-                return done(null, userMatch)
-            } else {
-                done(null, false)
-            }
-        });
     }));
     
     passport.serializeUser((user, done) => {

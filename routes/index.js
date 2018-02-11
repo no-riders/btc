@@ -125,13 +125,14 @@ app.get('/advisor', hasAccess, (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login', { message: req.flash('loginMessage') });
+    res.render('login');
 })
 
-app.post('/login', passport.authenticate('local', { failureFlash: 'Invalid username or password' }), (req, res) => {
-    req.flash('success', 'Logged in successfully')
-    res.redirect('/');
-})
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+}))
 
 app.get('/register', (req, res) => {
     res.render('register')
@@ -172,7 +173,7 @@ app.post('/register', (req, res) => {
                     const collection = [...helper.getData(helper.USERS_FILEPATH)]
                     collection.push(newUser)
                     helper.saveData(helper.USERS_FILEPATH, collection)
-                    req.flash('success', 'Successfully register, please log in')
+                    req.flash('success', 'Successfully registered, please log in')
                     res.redirect('/login');
                 })
             })
