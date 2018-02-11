@@ -19,7 +19,7 @@ module.exports = (passport) => {
         let userMatch = collection.find(user => {
             return user.username === username
         })
-//console.log(userMatch)
+
         if (!userMatch) {
             done(null, false, {message: "No user found"})
         } else {

@@ -18,22 +18,19 @@
             <% if (!isAuthenticated) { %> 
                 <div class="jumbotron text-center">
                     <h1><span class="fa fa-lock"></span> Authentication</h1>
-            
-                    <p>Login or Register with:</p>
-            
+                    <p>Login or Register with:</p>    
                     <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
                     <a href="/register" class="btn btn-default"><span class="fa fa-user"></span>Register</a>
                 </div>
             <% } else { %>
-                <p>Hello <%= (user.username) || 'Registered User' %>!</p>
-                <p><span class="fas fa-spinner fa-lg fa-pulse"></span> Fetching rates</p>
+                <h3>Hello, <%= (user.username) || 'Registered User' %>!</h3>
+                <p><span class="fas fa-spinner fa-lg fa-pulse"></span>  Fetching rates</p>
                 <a href="/ticker" class="btn btn-default"><span class="fab fa-bitcoin fa-lg"></span> Current Rate</a>
                 <a href="/ticker5min" class="btn btn-default"><span class="far fa-clock fa-lg"></span> 5min Rate</a>
                 <a href="/advisor" class="btn btn-default"><span class="fa fa-lock fa-lg"></span> Advisor</a>
-                
-            <%} %>
-
-
+                <hr>
+                <p><a href="/logout"><span class="fas fa-sign-out-alt fa-lg"></span> Logout</a></p>
+            <% } %>
         </div>
 
 

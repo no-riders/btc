@@ -1,14 +1,1 @@
-[
-  {
-    "username": "effg",
-    "email": "test@test.com",
-    "password": "$2a$10$l7lvSYYE/i3VNU9SlWFFIOs9UdoOiBlTztz.WuIMWjKpyZWjo1bye",
-    "password2": "12345"
-  },
-  {
-    "username": "effgen",
-    "email": "test2@test.com",
-    "password": "$2a$10$PG9iT3r6wQ6ScDxCHQtbNu4QUJQCy9CoHG/8Ig55BQrHYhBl6IdhK",
-    "password2": "qwerty"
-  }
-]
+[]
