@@ -64,14 +64,10 @@ const routes = require('./routes/index')
 app.set('view engine', 'ejs')
 
 app.use('/', routes);
-//app.use('/ticker', ticker)
 
 
 // catch wrong route error
 app.use((req, res, next) => {
-    // const error = new Error('Wrong page. Not found');
-    // error.status = 404;
-    // next(error);
     res.render('404')
 })
 
