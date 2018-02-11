@@ -136,7 +136,6 @@ app.post('/login', passport.authenticate('local', {
 
 app.get('/register', (req, res) => {
     res.render('register')
-
 })
 
 app.post('/register', (req, res) => {

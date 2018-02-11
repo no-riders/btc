@@ -69,9 +69,10 @@ app.use('/', routes);
 
 // catch wrong route error
 app.use((req, res, next) => {
-    const error = new Error('Wrong page. Not found');
-    error.status = 404;
-    next(error);
+    // const error = new Error('Wrong page. Not found');
+    // error.status = 404;
+    // next(error);
+    res.render('404')
 })
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
