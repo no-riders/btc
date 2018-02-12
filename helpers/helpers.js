@@ -19,16 +19,18 @@ function saveData(filePath, data) {
 }
 
 function getItemByTime(collection, time) {
-  let correctedTime = time - 500;
-
-  let rate5min = collection.find(item => {
-      if (item["bitcoin"].timestamp >= correctedTime && item["bitcoin"].timestamp <= time) {
-        return item;
-      } else {
-        return 'No rates history yet, please check later'
-      }
+  let correctedTime = time - 300;
+console.log('CORRECTED',correctedTime);
+console.log('NOW', time);
+  let rate5min = collection.filter(item => {
+      return item["bitcoin"].timestamp <= time && item["bitcoin"].timestamp >= correctedTime
   });
-  return rate5min;
+console.log('helper',rate5min);
+  if (rate5min.length > 0) {
+    return rate5min[0];
+  } else {
+    return 'No rates yet, check back later'
+  }
 }
 
 const getRate = async (url, url2, param3) => {

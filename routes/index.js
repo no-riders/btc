@@ -44,10 +44,10 @@ app.get('/register', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-    const name = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
-    const password2 = req.body.password2;
+    const name = req.body.username,
+        email = req.body.email,
+        password = req.body.password,
+        password2 = req.body.password2;
 
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('email', 'Email is required').notEmpty();
@@ -76,7 +76,7 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/ticker', (req, res) => {
-    let currRate = helper.getRate(helper.url, helper.url2)
+    helper.getRate(helper.url, helper.url2)
         .then(item => {
                 res.json({
             bitcoin: {
@@ -92,21 +92,30 @@ app.get('/ticker', (req, res) => {
 app.get('/ticker5min', (req, res) => {
     let dateNow = Date.now().toString().slice(0, -3),
         collection = [...helper.getData(helper.DATA_FILEPATH)],
-        last5mins = helper.getItemByTime(collection, dateNow);
-        console.log(typeof last5mins);
+        getLast5mins = helper.getItemByTime(collection, dateNow);
+
+    if (typeof getLast5mins === 'string') {
+        req.flash('danger', getLast5mins)
+        res.redirect('/')
+    } else {
         helper.getRate(helper.url, helper.url2)
-          .then(item => {
+            .then(item => {
             res.json({
-              bitcoin: {
+                bitcoin: {
                 current_rate: item.data.last,
-                rate5min: last5mins["bitcoin"].current_rate
-              },
-              ethereum: {
+                rate5min: getLast5mins["bitcoin"].current_rate
+                },
+                ethereum: {
                 current_rate: item.data2.last,
-                rate5min: last5mins["ethereum"].current_rate
-              }
-            });
-          });
+                rate5min: getLast5mins["ethereum"].current_rate
+                }
+            })
+            })
+            .catch((error) => {
+                throw new Error
+            })
+    }
+
 })
 
 app.get('/advisor', hasAccess, (req, res) => {
