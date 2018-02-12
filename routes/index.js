@@ -93,21 +93,20 @@ app.get('/ticker5min', (req, res) => {
     let dateNow = Date.now().toString().slice(0, -3),
         collection = [...helper.getData(helper.DATA_FILEPATH)],
         last5mins = helper.getItemByTime(collection, dateNow);
-
-    const getRate = async url => {
-        try {
-            const response = await axios.get(url),
-                data = response.data;
-            let objToRender = {};
-            objToRender.current_rate = data.last;
-            objToRender.rate_5min = last5mins.current_rate;
-            res.json(objToRender)
-            res.end()
-        } catch(error) {
-            throw new Error
-        }   
-    }
-    getRate(helper.url)
+        console.log(typeof last5mins);
+        helper.getRate(helper.url, helper.url2)
+          .then(item => {
+            res.json({
+              bitcoin: {
+                current_rate: item.data.last,
+                rate5min: last5mins["bitcoin"].current_rate
+              },
+              ethereum: {
+                current_rate: item.data2.last,
+                rate5min: last5mins["ethereum"].current_rate
+              }
+            });
+          });
 })
 
 app.get('/advisor', hasAccess, (req, res) => {

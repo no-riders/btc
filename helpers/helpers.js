@@ -20,9 +20,15 @@ function saveData(filePath, data) {
 
 function getItemByTime(collection, time) {
   let correctedTime = time - 500;
-  return collection.find(item => {
-    return item["bitcoin"].timestamp >= correctedTime && item.timestamp <= time;
+
+  let rate5min = collection.find(item => {
+      if (item["bitcoin"].timestamp >= correctedTime && item["bitcoin"].timestamp <= time) {
+        return item;
+      } else {
+        return 'No rates history yet, please check later'
+      }
   });
+  return rate5min;
 }
 
 const getRate = async (url, url2, param3) => {
