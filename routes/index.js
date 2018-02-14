@@ -90,9 +90,8 @@ app.get('/ticker', (req, res) => {
 })
 
 app.get('/ticker5min', (req, res) => {
-    let dateNow = Date.now().toString().slice(0, -3),
-        collection = [...helper.getData(helper.DATA_FILEPATH)],
-        getLast5mins = helper.getItemByTime(collection, dateNow);
+    let collection = [...helper.getData(helper.DATA_FILEPATH)],
+        getLast5mins = helper.getItemByTime(collection, helper.dateNow);
 
     if (typeof getLast5mins === 'string') {
         req.flash('danger', getLast5mins)
@@ -119,7 +118,27 @@ app.get('/ticker5min', (req, res) => {
 })
 
 app.get('/advisor', hasAccess, (req, res) => {
-    res.send('Advisor page')
+let collection = [...helper.getData(helper.DATA_FILEPATH)],
+    getLast5mins = helper.getItemByTime(collection, helper.dateNow);
+    
+    if (typeof getLast5mins === "string") {
+      req.flash("danger", getLast5mins);
+      res.redirect("/");
+    } else {
+      helper.getRate(helper.url, helper.url2)
+        .then(item => {
+        let result = helper.delta(item.data.last, getLast5mins["bitcoin"].current_rate);
+        req.flash('success', result)
+        console.log(result);
+        result ? res.render("advisor", {
+              result: result
+            }) : res.render("advisor");
+        
+    })
+        .catch(error => {
+            throw new Error();
+        });
+    }
 })
 
 function hasAccess(req, res, next) {

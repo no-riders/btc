@@ -16,15 +16,15 @@
 </head>
 <body>
 
-<% if (typeof errors == 'object' && errors) { %>
-    <% errors.forEach(err => { %>
-        <div class="alert alert-danger"><%= err.msg %></div>
-    <% }) %>
-<% } %>
-
+    
     <div class="container">
-
+        
         <div class="col-sm-6 col-sm-offset-3">
+            <% if (typeof errors == 'object' && errors) { %>
+                <% errors.forEach(err => { %>
+                    <div class="alert alert-danger"><%= err.msg %></div>
+                <% }) %>
+            <% } %>
         
             <h1><span class="fa fa-sign-in"></span> Signup</h1>
     

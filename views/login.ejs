@@ -16,14 +16,14 @@
 </head>
 <body>
 
-    <%- messages('messages', locals) %>
     
-    <% if(typeof errors == 'object' && errors) { %>
-        <div class="alert alert-danger"><%= message %></div>
-    <% } %>
-
     <div class="container">
         <div class="col-sm-6 col-sm-offset-3"> 
+                <%- messages('messages', locals) %>
+                
+                <% if(typeof errors == 'object' && errors) { %>
+                    <div class="alert alert-danger"><%= message %></div>
+                <% } %>
             <h1><span class="fa fa-sign-in"></span> Login</h1>  
             <form action="/login" method="post">
                 <div class="form-group">

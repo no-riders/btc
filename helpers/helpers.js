@@ -4,9 +4,10 @@ const fs = require("fs"),
     flash = require('connect-flash');
 
 const USERS_FILEPATH = path.join(__dirname, "../data/users.json"),
-    DATA_FILEPATH = path.join(__dirname, "../data/data.json"),
-    url = "https://www.bitstamp.net/api/ticker/",
-    url2 = "https://www.bitstamp.net/api/v2/ticker/ethusd";
+  DATA_FILEPATH = path.join(__dirname, "../data/data.json"),
+  url = "https://www.bitstamp.net/api/ticker/",
+  url2 = "https://www.bitstamp.net/api/v2/ticker/ethusd",
+  dateNow = Date.now().toString().slice(0, -3);
 
 
 
@@ -20,12 +21,12 @@ function saveData(filePath, data) {
 
 function getItemByTime(collection, time) {
   let correctedTime = time - 300;
-console.log('CORRECTED',correctedTime);
-console.log('NOW', time);
+//console.log('CORRECTED',correctedTime);
+//console.log('NOW', time);
   let rate5min = collection.filter(item => {
       return item["bitcoin"].timestamp <= time && item["bitcoin"].timestamp >= correctedTime
   });
-console.log('helper',rate5min);
+//console.log('helper',rate5min);
   if (rate5min.length > 0) {
     return rate5min[0];
   } else {
@@ -83,6 +84,15 @@ function bcryptPass (newUser, req, res) {
 })
 }
 
+function delta(last, prev) {
+  let diff = prev - last; 
+  console.log('DIFF',diff);
+  if (diff > 5 && diff > 0) {
+    return "Buy / Sell"
+  } else if (diff < 0 && diff < (-20)) {
+    return  "BUY!!! / SELL!!!"
+  }
+}
 
 
 module.exports = {
@@ -94,5 +104,7 @@ module.exports = {
   USERS_FILEPATH,
   DATA_FILEPATH,
   url,
-  url2
+  url2,
+  dateNow,
+  delta
 };

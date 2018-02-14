@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Auth</title>
+    <title>Crypto Rates</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -25,14 +25,17 @@
                     <a href="/register" class="btn btn-default"><span class="fa fa-user"></span>Register</a>
                 </div>
             <% } else { %>
+                <div class="jambotron text-center">
                     <%- messages('messages', locals) %>
                 <h3>Hello, <%= (user.username) || 'Registered User' %>!</h3>
+                <hr>
                 <p><span class="fas fa-spinner fa-lg fa-pulse"></span>  Fetching rates</p>
                 <a href="/ticker" class="btn btn-default"><span class="fab fa-bitcoin fa-lg"></span> Current Rate</a>
                 <a href="/ticker5min" class="btn btn-default"><span class="far fa-clock fa-lg"></span> 5min Rate</a>
                 <a href="/advisor" class="btn btn-default"><span class="fa fa-lock fa-lg"></span> Advisor</a>
                 <hr>
                 <p><a href="/logout"><span class="fas fa-sign-out-alt fa-lg"></span> Logout</a></p>
+                </div>
             <% } %>
         </div>
 
